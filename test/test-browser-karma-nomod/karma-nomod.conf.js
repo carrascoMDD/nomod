@@ -40,13 +40,17 @@ var someKarmaConfFiles = [
     
     '../../src/nomod.js',
     
+    '../behavioral-test/modulesinlined-behavioral-test/nomod-register-resolve-inlined-wodependencies-test.js',
     
     '../behavioral-test/modulefiles-wodependencies/module01wodeps.js',
     '../behavioral-test/modulefiles-wodependencies/module02wodeps.js',
+    '../behavioral-test/modulesinfiles-behavioral-test/nomod-register-resolve-infiles-wodependencies-test.js',
     
-    '../behavioral-test/modulesinlined-behavioral-test/nomod-register-resolve-inlined-wodependencies-test.js',
-    '../behavioral-test/modulesinfiles-behavioral-test/nomod-register-resolve-infiles-wodependencies-test.js'
-
+    '../behavioral-test/modulesinlined-behavioral-test/nomod-register-resolve-inlined-withdependencies-noloop-test.js',
+    
+    '../behavioral-test/modulefiles-withdependencies/module01withdeps.js',
+    '../behavioral-test/modulefiles-withdependencies/module02withdeps.js',
+    '../behavioral-test/modulesinfiles-behavioral-test/nomod-register-resolve-infiles-withdependencies-noloop-test.js'
 
 ];
 

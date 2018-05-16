@@ -1,6 +1,6 @@
 /*
- * module02wodeps.js
- *    test/behavioral-test/modulefiles-wodependencies
+ * module02withdeps.js
+ *    test/behavioral-test/modulefiles-withdependencies
  *
  * Created @author Antonio Carrasco Valero 201805160249
  *
@@ -35,8 +35,8 @@ permissions and limitations under the Licence.
     
     var aModule = {
         "ComponentName":  "nomod-test-instances",
-        "ModuleName":     "module02wodeps",
-        "ModulePackages": "test/behavioral-test/modulefiles-wodependencies"
+        "ModuleName":     "module02withdeps",
+        "ModulePackages": "test/behavioral-test/modulefiles-withdependencies"
     };
     aModule.ModuleFullName = nomod.fComputeFullName( aModule.ComponentName, aModule.ModulePackages, aModule.ModuleName);
     var aModule_definer = function() {
@@ -44,7 +44,9 @@ permissions and limitations under the Licence.
     };
     
     nomod.register( aModule.ComponentName, aModule.ModulePackages, aModule.ModuleName,
-        null /* theDependencies */,
+        [   /* theDependencies */
+            nomod.fComputeFullName( "nomod-test-instances", "test/behavioral-test/modulefiles-withdependencies", "module01withdeps")
+        ],
         aModule_definer
     );
     
