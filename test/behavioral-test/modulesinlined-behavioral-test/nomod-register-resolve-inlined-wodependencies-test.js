@@ -1,5 +1,5 @@
 /*
- * nomod-register-resolve-wodependencies.js
+ * nomod-register-resolve-inlined-wodependencies-test.js
  *
  * Created @author Antonio Carrasco Valero 201805160249
  *
@@ -60,14 +60,12 @@ describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
     
     
     
-    
-    beforeEach( function() {
-        nomod.reset();
-    });
-    
+   
     
     
     it("registers a module without dependencies and resolves it", function () {
+        
+        nomod.drop( aModule01.ModuleFullName);
         
         nomod.register( aModule01.ComponentName, aModule01.ModulePackages,aModule01.ModuleName,
             null /* theDependencies */,
@@ -85,7 +83,10 @@ describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
     
     
     it("registers two distinct modules without dependencies and resolves them", function () {
-        
+    
+        nomod.drop( aModule01.ModuleFullName);
+        nomod.drop( aModule02.ModuleFullName);
+    
         nomod.register( aModule01.ComponentName, aModule01.ModulePackages,aModule01.ModuleName,
             null /* theDependencies */,
             aModule01_definer

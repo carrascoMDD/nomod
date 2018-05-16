@@ -1,5 +1,5 @@
 /*
- * nomod.js
+ * nomod-register-resolve-inlined-withdependencies-noloop-test.js
  *
  * Created @author Antonio Carrasco Valero 201805160249
  *
@@ -58,14 +58,7 @@ describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
     };
     
     
-    
-    
-    
-    beforeEach( function() {
-        nomod.reset();
-    });
-    
-    
+   
     
     it("registers a module without dependencies and resolves it", function () {
         

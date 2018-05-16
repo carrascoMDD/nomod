@@ -77,10 +77,29 @@ nomod = (function() {
     };
     
     
+    
+    
     var nomod_reset = function( ) {
         
         MODULEREGISTRATIONS_BYFULLNAME = { };
     };
+    
+    
+    
+    var nomod_drop = function( theFullName) {
+        
+        if( !theFullName) {
+            return;
+        }
+        
+        if( !MODULEREGISTRATIONS_BYFULLNAME.hasOwnProperty( theFullName))  {
+            return;
+        }
+        
+        delete MODULEREGISTRATIONS_BYFULLNAME[ theFullName];
+    };
+    
+    
     
     
     var nomod_register = function( theComponentName, thePackageNames, theModuleName, theDependencies, theModuleDefiner) {
@@ -110,7 +129,7 @@ nomod = (function() {
         
         var anExistingRegistration = MODULEREGISTRATIONS_BYFULLNAME[ aFullName];
         if( !( typeof anExistingRegistration === "undefined")) {
-            throw new NomodException( OPERATION_register, MESSAGE_alreadyregistered, null, theComponentName, thePackageNames, theModuleName, anException);
+            throw new NomodException( OPERATION_register, MESSAGE_alreadyregistered, null, theComponentName, thePackageNames, theModuleName);
         }
         
         var aNow = new Date();
@@ -298,7 +317,7 @@ nomod = (function() {
             }
         }
         
-        var aFullStr =
+        var aFullStr = "NomodException " +
             ( this._v_Operation     ? ( "op=" + this._v_Operation )       : "?op") + " " +
             ( this._v_Message       ? ( "msg=" + this._v_Message )        : "") + " " +
             ( this._v_Parameter     ? ( "parm=" + this._v_Parameter )        : "") + " " +
@@ -415,14 +434,15 @@ nomod = (function() {
     
     
     var NOMOD = {
-        NAMESEPARATOR: NAMESEPARATOR,
-        
-        reset:    nomod_reset,
         register: nomod_register,
         resolve:  nomod_resolve,
         
-        /* helper for testing purposes */
-        fComputeFullName: fComputeFullName
+        /* helpers for testing purposes */
+        reset:    nomod_reset,
+        drop:     nomod_drop,
+        fComputeFullName: fComputeFullName,
+    
+        NAMESEPARATOR: NAMESEPARATOR
     };
     
     return NOMOD;
