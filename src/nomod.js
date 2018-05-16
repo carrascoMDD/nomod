@@ -33,6 +33,8 @@ permissions and limitations under the Licence.
 
 nomod = (function() {
     
+    "use strict";
+    
     var NAMESEPARATOR   = "/";
     
     var OPERATION_register   = "register";
@@ -313,8 +315,6 @@ nomod = (function() {
     
             theResolvedDependencies[ aDependencyToResolveIdx] = aJustResolved;
         }
-        
-        return;
     };
     
     
@@ -471,7 +471,7 @@ nomod = (function() {
     
         NAMESEPARATOR: NAMESEPARATOR
     };
-    
+    if( NOMOD){}/*CQT*/
     return NOMOD;
     
 })();
