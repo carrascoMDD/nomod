@@ -1,6 +1,6 @@
 {
   "name": "nomod",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "toy module definition, resolution and dependency injection used by prettytype multi-platform as an alternative to angular, require, node",
   "keywords": [
     "angularjs",
