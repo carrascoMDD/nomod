@@ -33,9 +33,6 @@ permissions and limitations under the Licence.
 var ComponentName    = "nomod-test";
 var ModuleName     = "nomod-register-resolve-wodependencies";
 var ModulePackages = "test/behavioral-test";
-var ModuleFullName = ModulePackages + "/" + ModuleName;
-
-if( typeof FG_logModLoads === 'function') { FG_logModLoads(ModuleFullName);}
 
 describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
     
