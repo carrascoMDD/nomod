@@ -40,7 +40,7 @@ var someKarmaConfFiles = [
     
     '../../src/nomod.js',
     
-    '../behavioral-test/nomod-register-resolve-wodependencies.js'
+    '../behavioral-test/nomod-register-resolve-wodependencies-test.js'
 ];
 
 

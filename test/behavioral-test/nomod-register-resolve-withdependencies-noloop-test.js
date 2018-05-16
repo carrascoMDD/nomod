@@ -46,6 +46,21 @@ describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
       return aModule01;
     };
     
+    
+    var aModule02 = {
+        "ComponentName": "nomod_test_adhoccmp",
+        "ModuleName": "Module02",
+        "ModulePackages": "nomodtestpkg"
+    };
+    aModule02.ModuleFullName = nomod.fComputeFullName( aModule02.ComponentName, aModule02.ModulePackages,aModule02.ModuleName);
+    var aModule02_definer = function() {
+        return aModule02;
+    };
+    
+    
+    
+    
+    
     beforeEach( function() {
         nomod.reset();
     });
@@ -59,12 +74,37 @@ describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
             aModule01_definer
         );
         
-        var aResolved = nomod.resolve( aModule01.ModuleFullName);
+        var aResolved01 = nomod.resolve( aModule01.ModuleFullName);
         
-        expect( typeof aResolved).not.toBe( "undefined");
-        expect( aResolved.ModuleFullName).toBe( aModule01.ModuleFullName)
+        expect( typeof aResolved01).not.toBe( "undefined");
+        expect( aResolved01.ModuleFullName).toBe( aModule01.ModuleFullName);
+        
     });
     
+    
+    
+    
+    it("registers two distinct modules without dependencies and resolves them", function () {
+        
+        nomod.register( aModule01.ComponentName, aModule01.ModulePackages,aModule01.ModuleName,
+            null /* theDependencies */,
+            aModule01_definer
+        );
+    
+        nomod.register( aModule02.ComponentName, aModule02.ModulePackages,aModule02.ModuleName,
+            null /* theDependencies */,
+            aModule02_definer
+        );
+        
+        var aResolved01 = nomod.resolve( aModule01.ModuleFullName);
+        var aResolved02 = nomod.resolve( aModule02.ModuleFullName);
+    
+        expect( typeof aResolved01).not.toBe( "undefined");
+        expect( aResolved01.ModuleFullName).toBe( aModule01.ModuleFullName);
+    
+        expect( typeof aResolved02).not.toBe( "undefined");
+        expect( aResolved02.ModuleFullName).toBe( aModule02.ModuleFullName)
+    });
     
     
 });
