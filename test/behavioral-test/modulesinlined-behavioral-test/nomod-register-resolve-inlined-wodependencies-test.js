@@ -1,5 +1,5 @@
 /*
- * nomod-register-resolve-inlined-wodependencies-test.js
+ * nomod-register-resolve-inlined-wodependencies-noloop-test.js
  *
  * Created @author Antonio Carrasco Valero 201805160249
  *
@@ -38,7 +38,7 @@ describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
     
     var aModule01 = {
         "ComponentName": "nomod_test_adhoccmp",
-        "ModuleName": "Module01",
+        "ModuleName": "Module01inlinedWOdeps",
         "ModulePackages": "nomodtestpkg"
     };
     aModule01.ModuleFullName = nomod.fComputeFullName( aModule01.ComponentName, aModule01.ModulePackages,aModule01.ModuleName);
@@ -49,7 +49,7 @@ describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
     
     var aModule02 = {
         "ComponentName": "nomod_test_adhoccmp",
-        "ModuleName": "Module02",
+        "ModuleName": "Module02inlinedWOdeps",
         "ModulePackages": "nomodtestpkg"
     };
     aModule02.ModuleFullName = nomod.fComputeFullName( aModule02.ComponentName, aModule02.ModulePackages,aModule02.ModuleName);
@@ -63,7 +63,7 @@ describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
    
     
     
-    it("registers a module without dependencies and resolves it", function () {
+    it("registers an inlined module without dependencies and resolves it", function () {
         
         nomod.drop( aModule01.ModuleFullName);
         
@@ -82,7 +82,7 @@ describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
     
     
     
-    it("registers two distinct modules without dependencies and resolves them", function () {
+    it("registers two distinct inlined modules without dependencies and resolves them", function () {
     
         nomod.drop( aModule01.ModuleFullName);
         nomod.drop( aModule02.ModuleFullName);

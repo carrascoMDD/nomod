@@ -38,7 +38,7 @@ describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
     
     var aModule01 = {
         "ComponentName": "nomod_test_adhoccmp",
-        "ModuleName": "Module01",
+        "ModuleName": "Module01inlinedWithDeps",
         "ModulePackages": "nomodtestpkg"
     };
     aModule01.ModuleFullName = nomod.fComputeFullName( aModule01.ComponentName, aModule01.ModulePackages,aModule01.ModuleName);
@@ -49,35 +49,19 @@ describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
     
     var aModule02 = {
         "ComponentName": "nomod_test_adhoccmp",
-        "ModuleName": "Module02",
+        "ModuleName": "Module02inlinedWithDeps",
         "ModulePackages": "nomodtestpkg"
     };
     aModule02.ModuleFullName = nomod.fComputeFullName( aModule02.ComponentName, aModule02.ModulePackages,aModule02.ModuleName);
-    var aModule02_definer = function() {
+    var aModule02_definer = function( theDependency01) {
+        aModule02.Dependency01 = theDependency01;
         return aModule02;
     };
     
     
    
     
-    it("registers a module without dependencies and resolves it", function () {
-        
-        nomod.register( aModule01.ComponentName, aModule01.ModulePackages,aModule01.ModuleName,
-            null /* theDependencies */,
-            aModule01_definer
-        );
-        
-        var aResolved01 = nomod.resolve( aModule01.ModuleFullName);
-        
-        expect( typeof aResolved01).not.toBe( "undefined");
-        expect( aResolved01.ModuleFullName).toBe( aModule01.ModuleFullName);
-        
-    });
-    
-    
-    
-    
-    it("registers two distinct modules without dependencies and resolves them", function () {
+    it("registers two distinct inlined modules with dependencies and resolves the one that depends on the other", function () {
         
         nomod.register( aModule01.ComponentName, aModule01.ModulePackages,aModule01.ModuleName,
             null /* theDependencies */,
@@ -85,18 +69,20 @@ describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
         );
     
         nomod.register( aModule02.ComponentName, aModule02.ModulePackages,aModule02.ModuleName,
-            null /* theDependencies */,
+            [ /* theDependencies */
+                aModule01.ModuleFullName
+            ],
             aModule02_definer
         );
         
-        var aResolved01 = nomod.resolve( aModule01.ModuleFullName);
         var aResolved02 = nomod.resolve( aModule02.ModuleFullName);
-    
-        expect( typeof aResolved01).not.toBe( "undefined");
-        expect( aResolved01.ModuleFullName).toBe( aModule01.ModuleFullName);
-    
+
         expect( typeof aResolved02).not.toBe( "undefined");
-        expect( aResolved02.ModuleFullName).toBe( aModule02.ModuleFullName)
+        expect( aResolved02.ModuleFullName).toBe( aModule02.ModuleFullName);
+    
+        var aResolved01 = nomod.resolve( aModule01.ModuleFullName);
+        expect( aResolved02.Dependency01).toBe( aResolved01);
+
     });
     
     

@@ -1,5 +1,5 @@
 /*
- * nomod-register-resolve-infiles-wodependencies-test.js
+ * nomod-register-resolve-infiles-withdependencies-test.js
  *
  * Created @author Antonio Carrasco Valero 201805160249
  *
@@ -38,9 +38,9 @@ describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
     
 
     
-    it("resolves a module without dependencies given its full name", function () {
+    it("resolves a module in a file with dependencies (not in a loop) given its full name", function () {
         
-        var aFullName01 = nomod.fComputeFullName( "nomod-test-instances", "test/behavioral-test/modulefiles-wodependencies", "module01infilewodeps");
+        var aFullName01 = nomod.fComputeFullName( "nomod-test-instances", "test/behavioral-test/modulefiles-withdependencies", "module01infilewithdeps");
         
         var aResolved01 = nomod.resolve( aFullName01);
         
@@ -52,10 +52,10 @@ describe( ModuleName + " " + ModulePackages + " " + ComponentName, function () {
     
     
     
-    it("resolves two distinct modules without dependencies  given their full name", function () {
+    it("resolves two distinct modules in files with dependencies (not in a loop) given their full name", function () {
     
-        var aFullName01 = nomod.fComputeFullName( "nomod-test-instances", "test/behavioral-test/modulefiles-wodependencies", "module01infilewodeps");
-        var aFullName02 = nomod.fComputeFullName( "nomod-test-instances", "test/behavioral-test/modulefiles-wodependencies", "module02infilewodeps");
+        var aFullName01 = nomod.fComputeFullName( "nomod-test-instances", "test/behavioral-test/modulefiles-withdependencies", "module01infilewithdeps");
+        var aFullName02 = nomod.fComputeFullName( "nomod-test-instances", "test/behavioral-test/modulefiles-withdependencies", "module02infilewithdeps");
     
         var aResolved01 = nomod.resolve( aFullName01);
         var aResolved02 = nomod.resolve( aFullName02);

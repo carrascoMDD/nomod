@@ -35,7 +35,7 @@ permissions and limitations under the Licence.
     
     var aModule = {
         "ComponentName":  "nomod-test-instances",
-        "ModuleName":     "module01withdeps",
+        "ModuleName":     "module01infilewithdeps",
         "ModulePackages": "test/behavioral-test/modulefiles-withdependencies"
     };
     aModule.ModuleFullName = nomod.fComputeFullName( aModule.ComponentName, aModule.ModulePackages, aModule.ModuleName);

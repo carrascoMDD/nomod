@@ -35,7 +35,7 @@ permissions and limitations under the Licence.
     
     var aModule = {
         "ComponentName":  "nomod-test-instances",
-        "ModuleName":     "module02withdeps",
+        "ModuleName":     "module02infilewithdeps",
         "ModulePackages": "test/behavioral-test/modulefiles-withdependencies"
     };
     aModule.ModuleFullName = nomod.fComputeFullName( aModule.ComponentName, aModule.ModulePackages, aModule.ModuleName);
@@ -45,7 +45,7 @@ permissions and limitations under the Licence.
     
     nomod.register( aModule.ComponentName, aModule.ModulePackages, aModule.ModuleName,
         [   /* theDependencies */
-            nomod.fComputeFullName( "nomod-test-instances", "test/behavioral-test/modulefiles-withdependencies", "module01withdeps")
+            nomod.fComputeFullName( "nomod-test-instances", "test/behavioral-test/modulefiles-withdependencies", "module01infilewithdeps")
         ],
         aModule_definer
     );

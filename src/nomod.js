@@ -149,7 +149,7 @@ nomod = (function() {
         aNewRegistration[ "definedTimestamp"]       = undefined;
         aNewRegistration[ "definedTimestampStr"]    = undefined;
     
-        aNewRegistration[ "resolvedDependencies"]   = undefined;
+        aNewRegistration[ "resolvedDependencies"]   = theDependencies;
         aNewRegistration[ "module"]                 = undefined;
         aNewRegistration[ "exception"]              = undefined;
         
@@ -248,7 +248,7 @@ nomod = (function() {
         var aDefinedModule = null;
         try {
             if( aNumDependencies) {
-                aDefinedModule = aModuleDefiner.apply( null, someDependencies);
+                aDefinedModule = aModuleDefiner.apply( null, someResolvedDependencies);
             }
             else {
                 aDefinedModule = aModuleDefiner();
@@ -279,14 +279,41 @@ nomod = (function() {
     
     
     var try_resolveDependenciesInto = function( theDependenciesToResolve, theResolvedDependencies) {
-        if( !( theDependenciesToResolve && theDependenciesToResolve.length)) {
+        if( !theDependenciesToResolve) {
             return;
         }
     
-        if( !( theResolvedDependencies && theResolvedDependencies.length)) {
+        if( !theResolvedDependencies) {
             return;
         }
     
+        var aNumDependenciesToResolve = theDependenciesToResolve.length;
+        if( !aNumDependenciesToResolve) {
+            return;
+        }
+    
+        for( var aDependencyToResolveIdx=0; aDependencyToResolveIdx < aNumDependenciesToResolve; aDependencyToResolveIdx++) {
+            var aDependencyToResolve = theDependenciesToResolve[ aDependencyToResolveIdx];
+            if( !aDependencyToResolve) {
+                continue;
+            }
+            
+            var anAlreadyResolved = theResolvedDependencies[ aDependencyToResolveIdx];
+            if( !( typeof anAlreadyResolved === "undefined")) {
+                continue;
+            }
+    
+            var aJustResolved = null;
+            try {
+                aJustResolved = nomod_resolve( aDependencyToResolve);
+            }
+            catch( anException) {
+                throw new NomodException( "try_resolveDependenciesInto", MESSAGE_internalerror, "Exception during try_resolve( aDependencyToResolve)", null, null, aDependencyToResolve, anException);
+            }
+    
+            theResolvedDependencies[ aDependencyToResolveIdx] = aJustResolved;
+        }
+        
         return;
     };
     
