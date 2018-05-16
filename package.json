@@ -1,0 +1,72 @@
+{
+  "name": "nomod",
+  "version": "0.0.1",
+  "description": "toy module definition, resolution and dependency injection used by prettytype multi-platform as an alternative to angular, require, node",
+  "keywords": [
+    "angularjs",
+    "requirejs",
+    "nodejs",
+    "modules",
+    "prototypes",
+    "superprototypes",
+    "prettytype"
+  ],
+  "homepage": "http://github.com/carrascoMDD/nomod",
+  "bugs": {
+    "url": "http://github.com/carrascoMDD/nomod/issues"
+  },
+  "license": "EUPL-1.1",
+  "author": {
+    "name": "Antonio Carrasco Valero",
+    "email": "carrascomdd@gmail.com"
+  },
+  "files": [
+    "src",
+    "build",
+    "dist",
+    "test",
+    "bower.json",
+    "Gruntfile.js",
+    "install.sh",
+    "package.json",
+    "README.md",
+    "test.sh",
+    "uninstall.sh"
+  ],
+  "main": "src/index.js",
+  "bin": {},
+  "man": null,
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/carrascoMDD/nomod.git"
+  },
+  "scripts": {
+    "bower": "bower",
+    "grunt": "grunt",
+    "testnomod": "grunt karma:nomod",
+    "test": "grunt karma:nomod",
+    "start": ""
+  },
+  "config": {},
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.8.4",
+    "grunt": "^1.0.2",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-contrib-watch": "^1.0.1",
+    "grunt-karma": "^2.0.0",
+    "jasmine": "^3.1.0",
+    "karma": "^2.0.2",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.2"
+  },
+  "maintainers": [
+    {
+      "name": "Antonio Carrasco Valero",
+      "email": "carrascomdd@gmail.com"
+    }
+  ]
+}

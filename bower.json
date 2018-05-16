@@ -1,0 +1,29 @@
+{
+  "name": "nomod",
+  "description": "toy module definition, resolution and dependency injection used by prettytype multi-platform as an alternative to angular, require, node",
+  "main": "",
+  "authors": [
+    "Antonio Carrasco Valero <carrascomdd@gmail.com>"
+  ],
+  "license": "EUPL-1.1",
+  "keywords": [
+    "angularjs",
+    "requirejs",
+    "nodejs",
+    "modules",
+    "prototypes",
+    "superprototypes",
+    "prettytype"
+  ],
+  "homepage": "https://github.com/carrascoMDD/nomod",
+  "moduleType": [
+    "globals"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+  }
+}
